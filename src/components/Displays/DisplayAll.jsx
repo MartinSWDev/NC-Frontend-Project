@@ -9,7 +9,6 @@ const DisplayAll = () => {
     axios
       .get('https://martinswdev-be-nc-games.herokuapp.com/api/reviews')
       .then(({ data }) => {
-        console.log(data.reviews);
         setAllReviews(data.reviews);
       });
   }, []);
@@ -20,16 +19,16 @@ const DisplayAll = () => {
         return (
           <div key={uuid()} className="displayAll-review">
             <img
-              key={uuid()}
               src={item.review_img_url}
               alt={item.title}
               className="displayAll-review__img"
             />
-            <h2 key={uuid()}>{item.title}</h2>
-            <p key={uuid()}>{item.category}</p>
-            <p key={uuid()}>{item.designer}</p>
-            <p key={uuid()}>{item.review_body} </p>
-            <p key={uuid()}>Votes: {item.votes}</p>
+            <h2>{item.title}</h2>
+            <p>{item.category}</p>
+            <p>{item.designer}</p>
+            <p>{item.review_body} </p>
+            <p>{item.created_at}</p>
+            <p>Votes: {item.votes}</p>
           </div>
         );
       })}
