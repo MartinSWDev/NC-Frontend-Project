@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
+import { Link } from 'react-router-dom';
 
 const DisplayAll = () => {
   const [allReviews, setAllReviews] = useState([]);
@@ -14,16 +15,18 @@ const DisplayAll = () => {
   }, []);
 
   return (
-    <main key={uuid()} className="displayAll-main">
+    <main key={uuid()} className="main">
       {allReviews.map((item) => {
         return (
-          <div key={uuid()} className="displayAll-review">
+          <div key={uuid()} className="review">
             <img
               src={item.review_img_url}
               alt={item.title}
-              className="displayAll-review__img"
+              className="review__img"
             />
-            <h2>{item.title}</h2>
+            <Link to={`/reviews/${item.review_id}`}>
+              <h2>{item.title}</h2>
+            </Link>
             <p>{item.category}</p>
             <p>{item.designer}</p>
             <p>{item.review_body} </p>
