@@ -1,15 +1,15 @@
-import DisplayAll from '../components/Displays/DisplayAll';
+import DisplayByCat from '../components/Displays/DisplayByCat';
 import Header from '../components/Headers/Header';
 import Nav from '../components/Nav/Nav';
 
-const Home = () => {
+const FilterCategory = () => {
   return (
     <div>
       <Header />
       <Nav />
-      <DisplayAll />
+      <DisplayByCat />
     </div>
   );
 };
 
-export default Home;
+export default FilterCategory;

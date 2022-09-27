@@ -1,21 +1,25 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
+import { useParams } from 'react-router-dom';
 
-const DisplayAll = () => {
-  const [allReviews, setAllReviews] = useState([]);
+const DisplayByCat = () => {
+  const [reviewsFilterCat, setReviewsFilterCat] = useState([]);
+  const { category } = useParams();
 
   useEffect(() => {
     axios
-      .get('https://martinswdev-be-nc-games.herokuapp.com/api/reviews')
+      .get(
+        `https://martinswdev-be-nc-games.herokuapp.com/api/reviews?category=${category}`
+      )
       .then(({ data }) => {
-        setAllReviews(data.reviews);
+        setReviewsFilterCat(data.reviews);
       });
-  }, []);
+  }, [category]);
 
   return (
     <main key={uuid()} className="main">
-      {allReviews.map((item) => {
+      {reviewsFilterCat.map((item) => {
         return (
           <div key={uuid()} className="review">
             <img
@@ -35,4 +39,4 @@ const DisplayAll = () => {
     </main>
   );
 };
-export default DisplayAll;
+export default DisplayByCat;
