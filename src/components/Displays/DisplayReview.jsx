@@ -7,6 +7,8 @@ import { useParams } from 'react-router-dom';
 const DisplayReview = () => {
   const [review, setReview] = useState([]);
   const { review_id } = useParams();
+  const [ifError, setIfError] = useState(false);
+  const [errorInfo, setErrorInfo] = useState({});
 
   useEffect(() => {
     axios
@@ -15,6 +17,10 @@ const DisplayReview = () => {
       )
       .then(({ data }) => {
         setReview([data.review]);
+      })
+      .catch((err) => {
+        setIfError(true);
+        setErrorInfo(err);
       });
   }, [review_id]);
 
@@ -23,6 +29,7 @@ const DisplayReview = () => {
       {review.map((item) => {
         return <ReviewCard item={item} key={uuid()} />;
       })}
+      {ifError ? <h2>{errorInfo.response.data.msg}</h2> : ''}
     </main>
   );
 };
