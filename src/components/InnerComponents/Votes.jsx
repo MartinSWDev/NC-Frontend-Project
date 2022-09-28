@@ -1,39 +1,30 @@
 import { faCircleDown, faCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Votes = ({ votes, review_id }) => {
-  const [displayVotes, setDisplayVotes] = useState(votes);
   const [voteChange, setVoteChange] = useState(0);
-  const [skipInitial, setSkipInitial] = useState(true);
   const [voteErr, setVoteErr] = useState(null);
+
+  const displayVotes = votes + voteChange;
 
   const handleVote = (vote) => {
     if (vote > -2 && vote < 2) {
-      setVoteChange(vote);
-      setVoteErr(null);
-      setDisplayVotes(displayVotes + vote);
+      setVoteChange(voteChange + vote);
+      axios
+        .patch(
+          `https://martinswdev-be-nc-games.herokuapp.com/api/reviews/${review_id}`,
+          {
+            inc_votes: vote,
+          }
+        )
+        .then(() => {
+          setVoteErr(null);
+        })
+        .catch(() => setVoteErr(true));
     }
   };
-
-  useEffect(
-    () => {
-      if (skipInitial) setSkipInitial(false);
-      if (!skipInitial) {
-        axios
-          .patch(
-            `https://martinswdev-be-nc-games.herokuapp.com/api/reviews/${review_id}`,
-            {
-              inc_votes: voteChange,
-            }
-          )
-          .catch(() => setVoteErr(true));
-      }
-    },
-    // eslint-disable-next-line
-    [displayVotes]
-  );
 
   return (
     <div>
