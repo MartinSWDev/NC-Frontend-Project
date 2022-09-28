@@ -9,39 +9,37 @@ const Votes = ({ votes, review_id }) => {
   const [skipInitial, setSkipInitial] = useState(true);
   const [voteErr, setVoteErr] = useState(null);
 
-  const handleIncrease = () => {
-    setDisplayVotes(displayVotes + 1);
-    setVoteChange(1);
-  };
-
-  const handleDecrease = () => {
-    setVoteChange(-1);
-    setVoteErr(null);
-    setDisplayVotes(displayVotes - 1);
-  };
-
-  useEffect(() => {
-    if (skipInitial) setSkipInitial(false);
-    if (!skipInitial) {
-      axios
-        .patch(
-          `https://martinswdev-be-nc-games.herokuapp.com/api/reviews/${review_id}`,
-          {
-            inc_votes: voteChange,
-          }
-        )
-        .then(({ data }) => {
-          console.log(data);
-        })
-        .catch(() => setVoteErr(true));
+  const handleVote = (vote) => {
+    if (vote > -2 && vote < 2) {
+      setVoteChange(vote);
+      setVoteErr(null);
+      setDisplayVotes(displayVotes + vote);
     }
-  }, [displayVotes]);
+  };
+
+  useEffect(
+    () => {
+      if (skipInitial) setSkipInitial(false);
+      if (!skipInitial) {
+        axios
+          .patch(
+            `https://martinswdev-be-nc-games.herokuapp.com/api/reviews/${review_id}`,
+            {
+              inc_votes: voteChange,
+            }
+          )
+          .catch(() => setVoteErr(true));
+      }
+    },
+    // eslint-disable-next-line
+    [displayVotes]
+  );
 
   return (
     <div>
-      <FontAwesomeIcon icon={faCircleUp} onClick={handleIncrease} />
+      <FontAwesomeIcon icon={faCircleUp} onClick={() => handleVote(1)} />
       <p>{displayVotes}</p>
-      <FontAwesomeIcon icon={faCircleDown} onClick={handleDecrease} />
+      <FontAwesomeIcon icon={faCircleDown} onClick={() => handleVote(-1)} />
       {voteErr ? <p>Voting failed</p> : ''}
     </div>
   );
