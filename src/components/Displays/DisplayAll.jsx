@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
+import { Link } from 'react-router-dom';
 
 const DisplayAll = () => {
   const [allReviews, setAllReviews] = useState([]);
@@ -23,7 +24,9 @@ const DisplayAll = () => {
               alt={item.title}
               className="review__img"
             />
-            <h2>{item.title}</h2>
+            <Link to={`/reviews/${item.review_id}`}>
+              <h2>{item.title}</h2>
+            </Link>
             <p>{item.category}</p>
             <p>{item.designer}</p>
             <p>{item.review_body} </p>
