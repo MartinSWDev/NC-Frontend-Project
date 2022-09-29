@@ -10,11 +10,28 @@
 .review {
   border: 2px solid blue;
   background-color: bisque;
-  max-width: 80%;
+  width: 80%;
   margin: 4em 0;
   text-align: center;
 }
 
 .review__img {
   width: 100%;
+}
+
+.comments-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid red;
+  background-color: rgb(127, 185, 255);
+}
+
+.comments-card {
+  border: 2px solid rgb(40, 170, 90);
+  background-color: rgb(218, 174, 218);
+  width: 80%;
+  margin: 2em 0;
+  text-align: center;
 }

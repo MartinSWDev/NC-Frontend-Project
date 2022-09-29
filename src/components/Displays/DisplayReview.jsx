@@ -3,6 +3,7 @@ import axios from 'axios';
 import uuid from 'react-uuid';
 import ReviewCard from '../InnerComponents/ReviewCard';
 import { useParams } from 'react-router-dom';
+import Comments from '../InnerComponents/Comments';
 
 const DisplayReview = () => {
   const [review, setReview] = useState([]);
@@ -30,6 +31,11 @@ const DisplayReview = () => {
         return <ReviewCard item={item} key={uuid()} />;
       })}
       {ifError ? <h2>{errorInfo.response.data.msg}</h2> : ''}
+      {review.length > 0 ? (
+        <Comments review_id={review[0].review_id} />
+      ) : (
+        <p>"No Comments"</p>
+      )}
     </main>
   );
 };

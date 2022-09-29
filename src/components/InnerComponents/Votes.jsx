@@ -22,7 +22,10 @@ const Votes = ({ votes, review_id }) => {
         .then(() => {
           setVoteErr(null);
         })
-        .catch(() => setVoteErr(true));
+        .catch(() => {
+          setVoteErr(true);
+          setVoteChange(voteChange);
+        });
     }
   };
 
