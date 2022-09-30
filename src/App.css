@@ -69,6 +69,7 @@ h1 {
   background-color: var(--clr-light-accent);
   width: 70%;
   margin: 2em 0;
+
   text-align: center;
   border-radius: 11px;
   display: flex;
@@ -268,4 +269,21 @@ h2 {
 .engine-building {
   background-color: #5c7728;
   color: var(--clr-light);
+}
+
+.comments-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid red;
+  background-color: rgb(127, 185, 255);
+}
+
+.comments-card {
+  border: 2px solid rgb(40, 170, 90);
+  background-color: rgb(218, 174, 218);
+  width: 80%;
+  margin: 2em 0;
+  text-align: center;
 }
