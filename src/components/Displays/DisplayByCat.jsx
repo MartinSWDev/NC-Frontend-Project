@@ -4,10 +4,12 @@ import uuid from 'react-uuid';
 import { useParams } from 'react-router-dom';
 import ReviewCard from '../InnerComponents/ReviewCard';
 import TopReviewCard from '../InnerComponents/TopReviewCard';
+import Err from '../../pages/Err';
 
 const DisplayByCat = () => {
   const [reviewsFilterCat, setReviewsFilterCat] = useState([]);
   const { category } = useParams();
+  const [isError, setErr] = useState(false);
 
   useEffect(() => {
     axios
@@ -16,7 +18,8 @@ const DisplayByCat = () => {
       )
       .then(({ data }) => {
         setReviewsFilterCat(data.reviews);
-      });
+      })
+      .catch(() => setErr(true));
   }, [category]);
 
   return (
@@ -25,6 +28,7 @@ const DisplayByCat = () => {
       {reviewsFilterCat.map((item) => {
         return <ReviewCard key={uuid()} className="review" item={item} />;
       })}
+      {isError ? <Err /> : ''}
     </main>
   );
 };

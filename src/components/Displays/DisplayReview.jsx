@@ -4,12 +4,14 @@ import uuid from 'react-uuid';
 import { useParams } from 'react-router-dom';
 import Comments from '../InnerComponents/Comments';
 import SingleReview from '../InnerComponents/SingleReview';
+import NewComment from '../InnerComponents/NewComment';
 
-const DisplayReview = ({ single }) => {
+const DisplayReview = ({ user }) => {
   const [review, setReview] = useState([]);
   const { review_id } = useParams();
   const [ifError, setIfError] = useState(false);
   const [errorInfo, setErrorInfo] = useState({});
+  const [showComments, setShowComments] = useState([]);
 
   useEffect(() => {
     axios
@@ -30,11 +32,25 @@ const DisplayReview = ({ single }) => {
       {review.map((item) => {
         return <SingleReview item={item} key={uuid()} />;
       })}
-      {ifError ? <h2>{errorInfo.response.data.msg}</h2> : ''}
+      {ifError ? <h2 className="error">{errorInfo.response.data.msg}</h2> : ''}
       {review.length > 0 ? (
-        <Comments review_id={review[0].review_id} />
+        <NewComment
+          review_id={review[0].review_id}
+          user={user}
+          setShowComments={setShowComments}
+          showComments={showComments}
+        />
       ) : (
-        <p>"No Comments"</p>
+        ''
+      )}
+      {review.length > 0 ? (
+        <Comments
+          review_id={review[0].review_id}
+          setShowComments={setShowComments}
+          showComments={showComments}
+        />
+      ) : (
+        ''
       )}
     </main>
   );
