@@ -27,10 +27,18 @@ const Votes = ({ votes, review_id }) => {
   };
 
   return (
-    <div>
-      <FontAwesomeIcon icon={faCircleUp} onClick={() => handleVote(1)} />
-      <p>{displayVotes}</p>
-      <FontAwesomeIcon icon={faCircleDown} onClick={() => handleVote(-1)} />
+    <div className="votes">
+      <FontAwesomeIcon
+        className="vote-icon-left"
+        icon={faCircleUp}
+        onClick={() => handleVote(1)}
+      />
+      <p className="vote-display">{displayVotes}</p>
+      <FontAwesomeIcon
+        className="vote-icon-right"
+        icon={faCircleDown}
+        onClick={() => handleVote(-1)}
+      />
       {voteErr ? <p>Voting failed</p> : ''}
     </div>
   );

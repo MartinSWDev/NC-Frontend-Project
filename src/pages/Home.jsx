@@ -1,12 +1,12 @@
 import DisplayAll from '../components/Displays/DisplayAll';
 import Header from '../components/Headers/Header';
-import Nav from '../components/Nav/Nav';
+import Hamburger from '../components/Nav/Hamburger';
 
 const Home = () => {
   return (
-    <div>
+    <div className="review-body">
       <Header />
-      <Nav />
+      <Hamburger />
       <DisplayAll />
     </div>
   );

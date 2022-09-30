@@ -1,12 +1,12 @@
 import DisplayError from '../components/Displays/DisplayError';
 import Header from '../components/Headers/Header';
-import Nav from '../components/Nav/Nav';
+import Hamburger from '../components/Nav/Hamburger';
 
 const Err = () => {
   return (
     <div>
       <Header />
-      <Nav />
+      <Hamburger />
       <DisplayError />
     </div>
   );
