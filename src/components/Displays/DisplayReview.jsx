@@ -4,8 +4,9 @@ import uuid from 'react-uuid';
 import { useParams } from 'react-router-dom';
 import Comments from '../InnerComponents/Comments';
 import SingleReview from '../InnerComponents/SingleReview';
+import NewComment from '../InnerComponents/NewComment';
 
-const DisplayReview = ({ single }) => {
+const DisplayReview = ({ user }) => {
   const [review, setReview] = useState([]);
   const { review_id } = useParams();
   const [ifError, setIfError] = useState(false);
@@ -32,10 +33,11 @@ const DisplayReview = ({ single }) => {
       })}
       {ifError ? <h2>{errorInfo.response.data.msg}</h2> : ''}
       {review.length > 0 ? (
-        <Comments review_id={review[0].review_id} />
+        <NewComment review_id={review[0].review_id} user={user} />
       ) : (
-        <p>"No Comments"</p>
+        ''
       )}
+      {review.length > 0 ? <Comments review_id={review[0].review_id} /> : ''}
     </main>
   );
 };

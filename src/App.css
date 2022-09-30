@@ -10,9 +10,26 @@ h1 {
   margin: 0em;
   color: var(--clr-light);
   background-color: var(--clr-dark-accent);
-  padding: 0.5em;
+  padding: 1em;
   position: fixed;
   width: 100vw;
+  display: inline-block;
+  font-size: 1.5em;
+}
+
+.header {
+  overflow: hidden;
+}
+
+.header img {
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  position: fixed;
+  top: 0.3em;
+  right: 0.4em;
+  border: 3px solid var(--clr-light-accent);
 }
 
 /* Landing */
@@ -69,7 +86,6 @@ h1 {
   background-color: var(--clr-light-accent);
   width: 70%;
   margin: 2em 0;
-
   text-align: center;
   border-radius: 11px;
   display: flex;
@@ -278,7 +294,7 @@ h2 {
   align-items: center;
   flex-direction: column;
   background-color: var(--clr-light-accent);
-  margin: -2em 0 2em 0;
+  margin: 2em 0 2em 0;
   border-radius: 11px;
   color: var(--clr-dark);
 }
@@ -290,4 +306,39 @@ h2 {
   text-align: center;
   border-radius: 11px;
   color: var(--clr-dark);
+}
+
+.comments-section__new {
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--clr-light-accent);
+  margin: -4em 0 2em 0;
+  border-radius: 11px;
+  color: var(--clr-dark);
+  padding: 1em 0 1em 0;
+}
+
+.comments-section__new-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--clr-light-accent);
+  border-radius: 11px;
+  color: var(--clr-dark);
+}
+textarea {
+  width: 80%;
+  height: 10vh;
+  border-radius: 10px;
+}
+
+form button {
+  margin: 0.5em 0;
+}
+
+form label {
+  margin: 0.5em 0;
 }
