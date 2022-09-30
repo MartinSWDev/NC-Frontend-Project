@@ -43,7 +43,6 @@ const NewComment = ({ review_id }) => {
         <textarea id="commentText" required></textarea>
         <button>Post comment</button>
       </form>
-      {console.log(newComment)}
       {isPosted ? <p>Comment Posted</p> : ''}
       {err ? <p>Comment not posted, are you logged in?</p> : ''}
     </section>
