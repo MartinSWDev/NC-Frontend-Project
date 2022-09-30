@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
 import ReviewCard from '../InnerComponents/ReviewCard';
+import TopReviewCard from '../InnerComponents/TopReviewCard';
 
 const DisplayAll = () => {
   const [allReviews, setAllReviews] = useState([]);
@@ -16,6 +17,7 @@ const DisplayAll = () => {
 
   return (
     <main key={uuid()} className="main">
+      <TopReviewCard />
       {allReviews.map((item) => {
         return <ReviewCard item={item} key={uuid()} />;
       })}

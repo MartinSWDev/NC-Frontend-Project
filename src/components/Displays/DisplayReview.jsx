@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import uuid from 'react-uuid';
-import ReviewCard from '../InnerComponents/ReviewCard';
 import { useParams } from 'react-router-dom';
 import Comments from '../InnerComponents/Comments';
+import SingleReview from '../InnerComponents/SingleReview';
 
-const DisplayReview = () => {
+const DisplayReview = ({ single }) => {
   const [review, setReview] = useState([]);
   const { review_id } = useParams();
   const [ifError, setIfError] = useState(false);
@@ -28,7 +28,7 @@ const DisplayReview = () => {
   return (
     <main className="main">
       {review.map((item) => {
-        return <ReviewCard item={item} key={uuid()} />;
+        return <SingleReview item={item} key={uuid()} />;
       })}
       {ifError ? <h2>{errorInfo.response.data.msg}</h2> : ''}
       {review.length > 0 ? (

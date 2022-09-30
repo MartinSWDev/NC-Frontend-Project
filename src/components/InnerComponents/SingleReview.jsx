@@ -3,9 +3,9 @@ import uuid from 'react-uuid';
 import Votes from './Votes';
 import { capCatWithSpace, isoDateTimeToDate } from '../../utils/functions.js';
 
-const ReviewCard = ({ item }) => {
+const SingleReview = ({ item }) => {
   return (
-    <div key={uuid()} className="review">
+    <div key={uuid()} className="review single">
       <p className={`review__category ${item.category} `}>
         {capCatWithSpace(item.category)}
       </p>
@@ -20,7 +20,7 @@ const ReviewCard = ({ item }) => {
           className="review__img"
         />
       </Link>
-      <p className="review__body">{item.review_body} </p>
+      <p className="review__body-single">{item.review_body} </p>
       <p className="review__designer">By {item.designer}</p>
       <p className="review__created">{isoDateTimeToDate(item.created_at)}</p>
       <Votes votes={item.votes} review_id={item.review_id} />
@@ -28,4 +28,4 @@ const ReviewCard = ({ item }) => {
   );
 };
 
-export default ReviewCard;
+export default SingleReview;

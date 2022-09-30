@@ -1,12 +1,12 @@
 import DisplayReview from '../components/Displays/DisplayReview';
 import Header from '../components/Headers/Header';
-import Nav from '../components/Nav/Nav';
+import Hamburger from '../components/Nav/Hamburger';
 
 const Review = () => {
   return (
     <div>
       <Header />
-      <Nav />
+      <Hamburger />
       <DisplayReview />
     </div>
   );
