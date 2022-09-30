@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import uuid from 'react-uuid';
+import { isoDateTimeToDate } from '../../utils/functions';
 
 const Comments = ({ review_id }) => {
   const [showComments, setShowComments] = useState([]);
@@ -24,8 +25,7 @@ const Comments = ({ review_id }) => {
           <div key={uuid()} className="comments-card">
             <h3>{comment.author}</h3>
             <p>{comment.body}</p>
-            <p>{comment.created_at}</p>
-            {/* <p>Current Votes: {comment.votes}</p> */}
+            <p>{isoDateTimeToDate(comment.created_at)}</p>
           </div>
         );
       })}

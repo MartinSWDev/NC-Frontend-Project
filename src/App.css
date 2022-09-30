@@ -273,17 +273,21 @@ h2 {
 
 .comments-section {
   display: flex;
+  width: 70%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid red;
-  background-color: rgb(127, 185, 255);
+  background-color: var(--clr-light-accent);
+  margin: -2em 0 2em 0;
+  border-radius: 11px;
+  color: var(--clr-dark);
 }
 
 .comments-card {
-  border: 2px solid rgb(40, 170, 90);
-  background-color: rgb(218, 174, 218);
+  background-color: var(--clr-light);
   width: 80%;
-  margin: 2em 0;
+  margin: 1em 0;
   text-align: center;
+  border-radius: 11px;
+  color: var(--clr-dark);
 }
