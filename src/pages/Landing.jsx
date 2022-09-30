@@ -97,13 +97,14 @@ const Landing = () => {
       }}
     >
       <Select
+        className="userSelect"
         styles={customStyles}
         options={usernames}
         getOptionValue={(option) => option.username}
         menuPlacement="top"
         onChange={(e) => setSelectedUser(e.name)}
         components={{ DropdownIndicator }}
-        placeholder={<div>Category</div>}
+        placeholder={<div>Select User</div>}
       />
       <button className="landing-btn" onClick={handleUser}>
         Login

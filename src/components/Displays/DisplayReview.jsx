@@ -11,6 +11,7 @@ const DisplayReview = ({ user }) => {
   const { review_id } = useParams();
   const [ifError, setIfError] = useState(false);
   const [errorInfo, setErrorInfo] = useState({});
+  const [showComments, setShowComments] = useState([]);
 
   useEffect(() => {
     axios
@@ -31,13 +32,26 @@ const DisplayReview = ({ user }) => {
       {review.map((item) => {
         return <SingleReview item={item} key={uuid()} />;
       })}
-      {ifError ? <h2>{errorInfo.response.data.msg}</h2> : ''}
+      {ifError ? <h2 className="error">{errorInfo.response.data.msg}</h2> : ''}
       {review.length > 0 ? (
-        <NewComment review_id={review[0].review_id} user={user} />
+        <NewComment
+          review_id={review[0].review_id}
+          user={user}
+          setShowComments={setShowComments}
+          showComments={showComments}
+        />
       ) : (
         ''
       )}
-      {review.length > 0 ? <Comments review_id={review[0].review_id} /> : ''}
+      {review.length > 0 ? (
+        <Comments
+          review_id={review[0].review_id}
+          setShowComments={setShowComments}
+          showComments={showComments}
+        />
+      ) : (
+        ''
+      )}
     </main>
   );
 };

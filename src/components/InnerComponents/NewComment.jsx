@@ -2,8 +2,7 @@ import axios from 'axios';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../context/userContext';
 
-const NewComment = ({ review_id }) => {
-  const [newComment, setNewComment] = useState([]);
+const NewComment = ({ review_id, showComments, setShowComments }) => {
   const [isPosted, setIsPosted] = useState(false);
   const [err, setErr] = useState(false);
   const { user } = useContext(UserContext);
@@ -22,17 +21,17 @@ const NewComment = ({ review_id }) => {
           body: textToPost,
         }
       )
-      .then(({ data: posted }) => {
-        setNewComment([posted]);
+      .then(({ data: { posted } }) => {
         setIsPosted(true);
         setErr(false);
+        setShowComments(() => [posted, ...showComments]);
+        e.target.elements.commentText.value = '';
       })
       .catch(() => {
         setIsPosted(false);
         setErr(true);
       });
   };
-
   return (
     <section className="comments-section__new">
       <form

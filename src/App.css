@@ -67,6 +67,11 @@ h1 {
   transition: 0.1s delay(0.4);
 }
 
+.userSelect {
+  position: absolute;
+  top: 65vh;
+}
+
 /* reviews */
 
 .review-body {
@@ -341,4 +346,9 @@ form button {
 
 form label {
   margin: 0.5em 0;
+}
+
+.error {
+  position: absolute;
+  top: 25vh;
 }

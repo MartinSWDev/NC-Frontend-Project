@@ -4,10 +4,32 @@ import axios from 'axios';
 import Select, { components } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { capCatWithSpace } from '../../utils/functions';
 
 const Nav = () => {
+  const [order, setOrder] = useState([]);
+  const [sort, setSort] = useState([]);
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
+
+  const acceptSortBy = [
+    'owner',
+    'title',
+    'review_id',
+    'category',
+    'review_img_url',
+    'created_at',
+    'votes',
+    'desginer',
+    'comment_count',
+  ];
+
+  const sortOptions = acceptSortBy.map((sort) => {
+    return {
+      name: sort,
+      label: capCatWithSpace(sort),
+    };
+  });
 
   useEffect(() => {
     axios
@@ -16,7 +38,7 @@ const Nav = () => {
         const options = data.categories.map((category) => {
           return {
             name: category.slug,
-            label: category.slug,
+            label: capCatWithSpace(category.slug),
           };
         });
         setCategories(options);
@@ -26,6 +48,10 @@ const Nav = () => {
   const handleSelect = (categorySelected) => {
     navigate(`/categories/${categorySelected.name}`);
   };
+
+  // const handleSort = (sortSelected) => {
+  //   navigate(`/categories/${categorySelected.name}?${sortSelected}`);
+  // };
 
   const darkAccent = '#6e5dcf';
   const customStyles = {
@@ -62,6 +88,15 @@ const Nav = () => {
 
   return (
     <nav className="nav">
+      {/* <Select
+        styles={customStyles}
+        options={sortOptions}
+        onChange={handleSelect}
+        getOptionValue={(option) => option.name}
+        menuPlacement="top"
+        components={{ DropdownIndicator }}
+        placeholder={<div>Sort by</div>}
+      /> */}
       <Select
         styles={customStyles}
         options={categories}
@@ -71,6 +106,9 @@ const Nav = () => {
         components={{ DropdownIndicator }}
         placeholder={<div>Category</div>}
       />
+      <Link to={`/`} style={{ textDecoration: 'none' }}>
+        <p className="nav_p">Login</p>
+      </Link>
       <Link to={`/reviews`} style={{ textDecoration: 'none' }}>
         <p className="nav_p">Home</p>
       </Link>
