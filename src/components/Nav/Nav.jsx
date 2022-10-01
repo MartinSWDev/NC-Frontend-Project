@@ -1,13 +1,43 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select, { components } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { capCatWithSpace } from '../../utils/functions';
 
 const Nav = () => {
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortData = [
+    'owner',
+    'title',
+    'review_id',
+    'category',
+    'review_img_url',
+    'created_at',
+    'votes',
+    'designer',
+    'comment_count',
+  ];
+
+  const orderData = ['ASC', 'DESC'];
+
+  const sort = sortData.map((data) => {
+    return {
+      name: data,
+      label: capCatWithSpace(data),
+    };
+  });
+
+  const order = orderData.map((data) => {
+    return {
+      name: data,
+      label: capCatWithSpace(data),
+    };
+  });
+
+  const location = useLocation();
 
   useEffect(() => {
     axios
@@ -16,7 +46,7 @@ const Nav = () => {
         const options = data.categories.map((category) => {
           return {
             name: category.slug,
-            label: category.slug,
+            label: capCatWithSpace(category.slug),
           };
         });
         setCategories(options);
@@ -24,7 +54,18 @@ const Nav = () => {
   }, []);
 
   const handleSelect = (categorySelected) => {
-    navigate(`/categories/${categorySelected.name}`);
+    searchParams.set('category', categorySelected.name);
+    setSearchParams(searchParams);
+  };
+
+  const handleSortBy = (sortBySelected) => {
+    searchParams.set('sort_by', sortBySelected.name);
+    setSearchParams(searchParams);
+  };
+
+  const handleOrder = (orderSelected) => {
+    searchParams.set('order', orderSelected.name);
+    setSearchParams(searchParams);
   };
 
   const darkAccent = '#6e5dcf';
@@ -59,18 +100,47 @@ const Nav = () => {
       </components.DropdownIndicator>
     );
   };
-
   return (
     <nav className="nav">
-      <Select
-        styles={customStyles}
-        options={categories}
-        onChange={handleSelect}
-        getOptionValue={(option) => option.name}
-        menuPlacement="top"
-        components={{ DropdownIndicator }}
-        placeholder={<div>Category</div>}
-      />
+      {location.pathname === '/reviews' ? (
+        <Select
+          styles={customStyles}
+          options={order}
+          onChange={handleOrder}
+          getOptionValue={(option) => option.name}
+          menuPlacement="top"
+          components={{ DropdownIndicator }}
+          placeholder={<div>Order</div>}
+        />
+      ) : (
+        ''
+      )}
+      {location.pathname === '/reviews' ? (
+        <Select
+          styles={customStyles}
+          options={sort}
+          onChange={handleSortBy}
+          getOptionValue={(option) => option.name}
+          menuPlacement="top"
+          components={{ DropdownIndicator }}
+          placeholder={<div>Sort By</div>}
+        />
+      ) : (
+        ''
+      )}
+      {location.pathname === '/reviews' ? (
+        <Select
+          styles={customStyles}
+          options={categories}
+          onChange={handleSelect}
+          getOptionValue={(option) => option.name}
+          menuPlacement="top"
+          components={{ DropdownIndicator }}
+          placeholder={<div>Category</div>}
+        />
+      ) : (
+        ''
+      )}
       <Link to={`/reviews`} style={{ textDecoration: 'none' }}>
         <p className="nav_p">Home</p>
       </Link>
