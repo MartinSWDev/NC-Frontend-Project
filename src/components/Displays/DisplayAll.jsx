@@ -8,6 +8,8 @@ import { useSearchParams } from 'react-router-dom';
 const DisplayAll = () => {
   const [allReviews, setAllReviews] = useState([]);
   const [searchParams] = useSearchParams();
+  const [ifError, setIfError] = useState(false);
+  const [errorInfo, setErrorInfo] = useState({});
 
   useEffect(() => {
     axios
@@ -16,12 +18,20 @@ const DisplayAll = () => {
       )
       .then(({ data }) => {
         setAllReviews(data.reviews);
+      })
+      .catch((err) => {
+        setIfError(true);
+        setErrorInfo(err);
       });
   }, [searchParams]);
 
   return (
     <main key={uuid()} className="main">
-      <TopReviewCard />
+      {ifError ? (
+        <h2 className="error">{errorInfo.response.data.msg}</h2>
+      ) : (
+        <TopReviewCard />
+      )}
       {allReviews.map((item) => {
         return <ReviewCard item={item} key={uuid()} />;
       })}
