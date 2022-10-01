@@ -1,11 +1,9 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import uuid from 'react-uuid';
 import { isoDateTimeToDate } from '../../utils/functions';
 
-const Comments = ({ review_id }) => {
-  const [showComments, setShowComments] = useState([]);
-
+const Comments = ({ review_id, showComments, setShowComments }) => {
   useEffect(() => {
     axios
       .get(
@@ -13,9 +11,8 @@ const Comments = ({ review_id }) => {
       )
       .then(({ data: comments }) => {
         setShowComments(comments.comments);
-      })
-      .catch();
-  }, [review_id]);
+      });
+  }, [review_id, setShowComments]);
 
   return (
     <section className="comments-section">
