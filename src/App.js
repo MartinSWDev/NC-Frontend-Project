@@ -1,6 +1,5 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
-import FilterCategory from './pages/FilterCategory';
 import Err from './pages/Err';
 import Home from './pages/Home';
 import Review from './pages/Review';

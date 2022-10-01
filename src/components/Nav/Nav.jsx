@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Select, { components } from 'react-select';
@@ -7,12 +7,9 @@ import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { capCatWithSpace } from '../../utils/functions';
 
 const Nav = () => {
-  const [order, setOrder] = useState([]);
-  const [sort, setSort] = useState([]);
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
-
-  const acceptSortBy = [
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sortData = [
     'owner',
     'title',
     'review_id',
@@ -20,16 +17,27 @@ const Nav = () => {
     'review_img_url',
     'created_at',
     'votes',
-    'desginer',
+    'designer',
     'comment_count',
   ];
 
-  const sortOptions = acceptSortBy.map((sort) => {
+  const orderData = ['ASC', 'DESC'];
+
+  const sort = sortData.map((data) => {
     return {
-      name: sort,
-      label: capCatWithSpace(sort),
+      name: data,
+      label: capCatWithSpace(data),
     };
   });
+
+  const order = orderData.map((data) => {
+    return {
+      name: data,
+      label: capCatWithSpace(data),
+    };
+  });
+
+  const location = useLocation();
 
   useEffect(() => {
     axios
@@ -46,12 +54,19 @@ const Nav = () => {
   }, []);
 
   const handleSelect = (categorySelected) => {
-    navigate(`/categories/${categorySelected.name}`);
+    searchParams.set('category', categorySelected.name);
+    setSearchParams(searchParams);
   };
 
-  // const handleSort = (sortSelected) => {
-  //   navigate(`/categories/${categorySelected.name}?${sortSelected}`);
-  // };
+  const handleSortBy = (sortBySelected) => {
+    searchParams.set('sort_by', sortBySelected.name);
+    setSearchParams(searchParams);
+  };
+
+  const handleOrder = (orderSelected) => {
+    searchParams.set('order', orderSelected.name);
+    setSearchParams(searchParams);
+  };
 
   const darkAccent = '#6e5dcf';
   const customStyles = {
@@ -85,30 +100,47 @@ const Nav = () => {
       </components.DropdownIndicator>
     );
   };
-
   return (
     <nav className="nav">
-      {/* <Select
-        styles={customStyles}
-        options={sortOptions}
-        onChange={handleSelect}
-        getOptionValue={(option) => option.name}
-        menuPlacement="top"
-        components={{ DropdownIndicator }}
-        placeholder={<div>Sort by</div>}
-      /> */}
-      <Select
-        styles={customStyles}
-        options={categories}
-        onChange={handleSelect}
-        getOptionValue={(option) => option.name}
-        menuPlacement="top"
-        components={{ DropdownIndicator }}
-        placeholder={<div>Category</div>}
-      />
-      <Link to={`/`} style={{ textDecoration: 'none' }}>
-        <p className="nav_p">Login</p>
-      </Link>
+      {location.pathname === '/reviews' ? (
+        <Select
+          styles={customStyles}
+          options={order}
+          onChange={handleOrder}
+          getOptionValue={(option) => option.name}
+          menuPlacement="top"
+          components={{ DropdownIndicator }}
+          placeholder={<div>Order</div>}
+        />
+      ) : (
+        ''
+      )}
+      {location.pathname === '/reviews' ? (
+        <Select
+          styles={customStyles}
+          options={sort}
+          onChange={handleSortBy}
+          getOptionValue={(option) => option.name}
+          menuPlacement="top"
+          components={{ DropdownIndicator }}
+          placeholder={<div>Sort By</div>}
+        />
+      ) : (
+        ''
+      )}
+      {location.pathname === '/reviews' ? (
+        <Select
+          styles={customStyles}
+          options={categories}
+          onChange={handleSelect}
+          getOptionValue={(option) => option.name}
+          menuPlacement="top"
+          components={{ DropdownIndicator }}
+          placeholder={<div>Category</div>}
+        />
+      ) : (
+        ''
+      )}
       <Link to={`/reviews`} style={{ textDecoration: 'none' }}>
         <p className="nav_p">Home</p>
       </Link>
