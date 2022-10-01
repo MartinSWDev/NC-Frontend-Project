@@ -1,9 +1,12 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import uuid from 'react-uuid';
+import { UserContext } from '../../context/userContext';
 import { isoDateTimeToDate } from '../../utils/functions';
 
 const Comments = ({ review_id, showComments, setShowComments }) => {
+  const { user } = useContext(UserContext);
+
   useEffect(() => {
     axios
       .get(
@@ -14,6 +17,16 @@ const Comments = ({ review_id, showComments, setShowComments }) => {
       });
   }, [review_id, setShowComments]);
 
+  const handleDelete = (comment_id, comment) => {
+    axios
+      .delete(
+        `https://martinswdev-be-nc-games.herokuapp.com/api/comments/${comment_id}`
+      )
+      .then(() => {
+        setShowComments(showComments.filter((com) => com !== comment));
+      });
+  };
+
   return (
     <section className="comments-section">
       <h2>Comments</h2>
@@ -23,6 +36,19 @@ const Comments = ({ review_id, showComments, setShowComments }) => {
             <h3>{comment.author}</h3>
             <p>{comment.body}</p>
             <p>{isoDateTimeToDate(comment.created_at)}</p>
+            {user ? (
+              user.username === comment.author ? (
+                <button
+                  onClick={() => handleDelete(comment.comment_id, comment)}
+                >
+                  Delete
+                </button>
+              ) : (
+                ''
+              )
+            ) : (
+              ''
+            )}
           </div>
         );
       })}

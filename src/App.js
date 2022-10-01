@@ -22,10 +22,6 @@ function App() {
               path="/reviews/:review_id"
               element={<Review user={user} />}
             ></Route>
-            <Route
-              path="/categories/:category"
-              element={<FilterCategory user={user} />}
-            ></Route>
             <Route path="*" element={<Err />} />
           </Routes>
         </UserContext.Provider>
