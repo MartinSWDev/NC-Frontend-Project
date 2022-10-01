@@ -141,6 +141,9 @@ const Nav = () => {
       ) : (
         ''
       )}
+      <Link to={`/`} style={{ textDecoration: 'none' }}>
+        <p className="nav_p">Login</p>
+      </Link>
       <Link to={`/reviews`} style={{ textDecoration: 'none' }}>
         <p className="nav_p">Home</p>
       </Link>
