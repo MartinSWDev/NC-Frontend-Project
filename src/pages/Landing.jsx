@@ -15,6 +15,7 @@ const Landing = () => {
   const { setUser } = useContext(UserContext);
 
   useEffect(() => {
+    setUser({});
     axios
       .get(`https://martinswdev-be-nc-games.herokuapp.com/api/users`)
       .then(({ data }) => {
@@ -91,7 +92,6 @@ const Landing = () => {
           },
         },
         pageExit: {
-          y: '-100vh',
           transition: { ease: 'easeIn' },
         },
       }}
@@ -100,7 +100,7 @@ const Landing = () => {
         className="userSelect"
         styles={customStyles}
         options={usernames}
-        getOptionValue={(option) => option.username}
+        getOptionValue={(option) => option.name}
         menuPlacement="top"
         onChange={(e) => setSelectedUser(e.name)}
         components={{ DropdownIndicator }}

@@ -102,15 +102,24 @@ const Nav = () => {
   };
   return (
     <nav className="nav">
+      <Link
+        to={`/reviews`}
+        style={{ textDecoration: 'none', alignSelf: 'center' }}
+      >
+        <p className="nav_p">Home</p>
+      </Link>
+      <Link to={`/`} style={{ textDecoration: 'none', alignSelf: 'center' }}>
+        <p className="nav_p">Login</p>
+      </Link>
       {location.pathname === '/reviews' ? (
         <Select
           styles={customStyles}
-          options={order}
-          onChange={handleOrder}
+          options={categories}
+          onChange={handleSelect}
           getOptionValue={(option) => option.name}
-          menuPlacement="top"
           components={{ DropdownIndicator }}
-          placeholder={<div>Order</div>}
+          menuPlacement="top"
+          placeholder={<div>Category</div>}
         />
       ) : (
         ''
@@ -121,8 +130,8 @@ const Nav = () => {
           options={sort}
           onChange={handleSortBy}
           getOptionValue={(option) => option.name}
-          menuPlacement="top"
           components={{ DropdownIndicator }}
+          menuPlacement="top"
           placeholder={<div>Sort By</div>}
         />
       ) : (
@@ -131,22 +140,16 @@ const Nav = () => {
       {location.pathname === '/reviews' ? (
         <Select
           styles={customStyles}
-          options={categories}
-          onChange={handleSelect}
+          options={order}
+          onChange={handleOrder}
           getOptionValue={(option) => option.name}
-          menuPlacement="top"
           components={{ DropdownIndicator }}
-          placeholder={<div>Category</div>}
+          menuPlacement="top"
+          placeholder={<div>Order</div>}
         />
       ) : (
         ''
       )}
-      <Link to={`/`} style={{ textDecoration: 'none' }}>
-        <p className="nav_p">Login</p>
-      </Link>
-      <Link to={`/reviews`} style={{ textDecoration: 'none' }}>
-        <p className="nav_p">Home</p>
-      </Link>
     </nav>
   );
 };
