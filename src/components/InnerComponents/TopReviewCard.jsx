@@ -1,13 +1,38 @@
+import { useSearchParams } from 'react-router-dom';
 import uuid from 'react-uuid';
 import chess from '../../assets/img/home-game.png';
 import { capCatWithSpace } from '../../utils/functions.js';
 
-const TopReviewCard = ({ category }) => {
+import './TopReviewCard.css';
+
+const TopReviewCard = () => {
+  const [searchParams] = useSearchParams();
   return (
-    <div key={uuid()} className="review top-review">
-      <p className={`review__category welcome`}>Currently Viewing</p>
-      <img src={chess} alt={'knight chess piece'} className="review__img" />
-      <h2>Game Reviews: {category ? capCatWithSpace(category) : 'All'}</h2>
+    <div key={uuid()} className="reviewcard topreviewcard loadable">
+      <img
+        src={chess}
+        alt={'knight chess piece'}
+        className="topreviewcard__img"
+      />
+      <div className="topreviewcard__text">
+        <h2>Currently Viewing</h2>
+        <p>
+          Game Reviews:{' '}
+          {searchParams.has('category' || 'sort_by' || 'order')
+            ? capCatWithSpace(searchParams.get('category'))
+            : 'All'}
+        </p>
+        <p>
+          {searchParams.has('sort_by')
+            ? 'Sort By: ' + capCatWithSpace(searchParams.get('sort_by'))
+            : ''}
+        </p>
+        <p>
+          {searchParams.has('order')
+            ? 'Order: ' + capCatWithSpace(searchParams.get('order'))
+            : ''}
+        </p>
+      </div>
     </div>
   );
 };

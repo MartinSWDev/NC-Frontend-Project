@@ -1,0 +1,53 @@
+/* comments */
+.comments__section {
+  display: flex;
+  width: 75vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--clr-dark);
+}
+
+.comments__section h2 {
+}
+
+.comments__card {
+  width: 100%;
+  margin: 0 0.5em 2em 0.5em;
+  padding: 0.7em;
+  border: 5px solid var(--clr-light-accent);
+  border-radius: 1.25rem;
+}
+.comments__card p {
+  text-align: left;
+  margin: 0rem 2rem 0rem 2rem;
+}
+.comments__card h4 {
+  margin: 0rem 2rem 0rem 2rem;
+  font-size: 1.25em;
+}
+
+.comments__card button {
+  margin: 0.5rem 2rem 0rem 2em;
+  padding: 0.5em 1em;
+  background-color: var(--clr-dark-accent);
+  border-radius: 10px;
+  border: none;
+  font: 600 1em system-ui;
+  color: var(--clr-light);
+  transition: all 0.5s ease-in-out;
+}
+
+.comments__card button:hover {
+  background-color: var(--clr-light-accent);
+  color: var(--clr-dark);
+  transform: scale(1.05);
+  transition: 0.7s;
+}
+
+.comments__card button:active {
+  background-color: var(--clr-light-accent);
+  color: var(--clr-dark);
+  transform: scale(1.05);
+  transition: 0.1s delay(0.4);
+}

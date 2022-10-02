@@ -1,0 +1,60 @@
+/* NewComment */
+
+.newcomment {
+  width: 100vw;
+  max-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: var(--clr-dark);
+  border-radius: 1.25rem;
+  color: var(--clr-light);
+  padding: 1em 0 1em 0;
+}
+
+.newcomment__form {
+  display: flex;
+  flex-direction: column;
+  margin: 0.25rem 2rem 0 2rem;
+}
+.newcomment__form label {
+  margin: 0.5em 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.newcomment__form textarea {
+  height: 10vh;
+}
+
+.newcomment p {
+  margin: 0.25rem 2rem 1em 2rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.newcomment__form button {
+  margin: 1em 0;
+  padding: 0.75em 0;
+  background-color: var(--clr-dark-accent);
+  border-radius: 10px;
+  border: none;
+  font: 600 1em system-ui;
+  color: var(--clr-light);
+  transition: all 0.5s ease-in-out;
+}
+
+.newcomment__form button:hover {
+  background-color: var(--clr-light-accent);
+  color: var(--clr-dark);
+  transform: scale(1.05);
+  transition: 0.7s;
+}
+
+.newcomment__form button:active {
+  background-color: var(--clr-light-accent);
+  color: var(--clr-dark);
+  transform: scale(1.05);
+  transition: 0.1s delay(0.4);
+}

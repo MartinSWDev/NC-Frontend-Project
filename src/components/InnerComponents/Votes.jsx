@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { useState } from 'react';
 
+import './Votes.css';
+
 const Votes = ({ votes, review_id }) => {
   const [voteChange, setVoteChange] = useState(0);
   const [voteErr, setVoteErr] = useState(null);
@@ -32,13 +34,13 @@ const Votes = ({ votes, review_id }) => {
   return (
     <div className="votes">
       <FontAwesomeIcon
-        className="vote-icon-left"
+        className="votes__icon__left"
         icon={faCircleUp}
         onClick={() => handleVote(1)}
       />
-      <p className="vote-display">{displayVotes}</p>
+      <p className="votes__display">{displayVotes}</p>
       <FontAwesomeIcon
-        className="vote-icon-right"
+        className="votes__icon__right"
         icon={faCircleDown}
         onClick={() => handleVote(-1)}
       />

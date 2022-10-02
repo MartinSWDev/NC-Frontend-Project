@@ -7,7 +7,6 @@ import User from '../components/Nav/User';
 const Home = () => {
   return (
     <motion.div
-      className="review-body"
       initial="hidden"
       animate="visible"
       exit="pageExit"

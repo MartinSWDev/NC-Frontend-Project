@@ -3,14 +3,16 @@ import { UserContext } from '../../context/userContext';
 
 import { Link } from 'react-router-dom';
 
+import './UserInfo.css';
+
 const UserInfo = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="user-bar">
+    <div className="userinfo">
       {user ? (
         <img
-          className="user-bar__img"
+          className="userinfo__img"
           src={user.avatar_url}
           alt={`${user.username} profile pic`}
         />

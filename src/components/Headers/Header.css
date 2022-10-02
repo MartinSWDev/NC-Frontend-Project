@@ -1,0 +1,22 @@
+/* Header */
+.header {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  padding: 1em;
+  background-color: var(--clr-light);
+  position: fixed;
+  z-index: 10;
+  box-shadow: 1px 1px 1px rgba(210, 210, 234, 0.2),
+    2px 2px 2px rgba(255, 255, 255, 0.2), 4px 8px 8px rgba(240, 240, 240, 0.2),
+    4px 4px 4px rgba(228, 230, 234, 0.2),
+    8px 8px 8px hsl(219.4deg 48.2% 27.3% / 0.2);
+}
+
+.header h1 {
+  margin: 0 0 0 0;
+  color: var(--clr-dark-accent);
+  font-size: 1.5em;
+}

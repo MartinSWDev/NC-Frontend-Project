@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import uuid from 'react-uuid';
-import Votes from './Votes';
-import { capCatWithSpace, isoDateTimeToDate } from '../../utils/functions.js';
+import { capCatWithSpace } from '../../utils/functions.js';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+
+import './ReviewCard.css';
 
 const ReviewCard = ({ item }) => {
   const [imageLoading, setImageLoading] = useState(true);
@@ -21,7 +22,7 @@ const ReviewCard = ({ item }) => {
     >
       <motion.div
         key={uuid()}
-        className="review"
+        className="reviewcard"
         initial={{ height: '16rem', opacity: 0 }}
         animate={{
           height: imageLoading ? '16rem' : 'auto',
@@ -34,24 +35,23 @@ const ReviewCard = ({ item }) => {
         onLoad={cardLoaded}
         width="100%"
       >
-        <p className={`review__category ${item.category} `}>
-          {capCatWithSpace(item.category)}
-        </p>
         <Link
           to={`/reviews/${item.review_id}`}
           style={{ textDecoration: 'none' }}
         >
-          <h2 className="review-title">{item.title}</h2>
           <img
             src={item.review_img_url}
             alt={item.title}
-            className="review__img"
+            className="reviewcard__img"
           />
+          <div className="reviewcard__text">
+            <h2 className="reviewcard__text__title">{item.title}</h2>
+            <p className={`reviewcard__text__category ${item.category} `}>
+              {capCatWithSpace(item.category)}
+            </p>
+            <p className="reviewcard__text__body">{item.review_body} </p>
+          </div>
         </Link>
-        <p className="review__body">{item.review_body} </p>
-        <p className="review__designer">By {item.designer}</p>
-        <p className="review__created">{isoDateTimeToDate(item.created_at)}</p>
-        <Votes votes={item.votes} review_id={item.review_id} />
       </motion.div>
     </div>
   );

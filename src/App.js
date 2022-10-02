@@ -13,7 +13,7 @@ function App() {
   const location = useLocation();
   return (
     <div className="App">
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         <UserContext.Provider value={{ user, setUser }}>
           <Routes location={location} key={location.key}>
             <Route path="/" element={<Landing setUser={setUser} />}></Route>

@@ -1,0 +1,44 @@
+/* singleReview */
+/* Borrows from ReviewCard.css
+     including:
+          reviewcard__img
+          reviewcard__text__category  */
+
+.singlereview {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-light);
+  margin: 3em 0;
+}
+
+.singlereview__img {
+  border-radius: 0 0 1.25rem 1.25rem;
+}
+
+.singlereview__title {
+  text-align: left;
+  margin: 1rem 2rem 0rem 2rem;
+  font-size: 1.5em;
+}
+
+.singlereview__designer {
+  position: relative;
+  text-align: left;
+  margin: 0.25rem 2rem 0 2rem;
+}
+
+.singlereview__created {
+  position: relative;
+  text-align: left;
+  margin: 0.25rem 2rem 0 2rem;
+}
+.singlereview__body {
+  text-align: justify;
+  margin: 0.5rem 2rem 0 2rem;
+}
+
+.singlereview__category {
+  margin: 0.5rem 2rem 0 2rem;
+}

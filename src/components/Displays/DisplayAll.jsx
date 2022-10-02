@@ -5,6 +5,8 @@ import ReviewCard from '../InnerComponents/ReviewCard';
 import TopReviewCard from '../InnerComponents/TopReviewCard';
 import { useSearchParams } from 'react-router-dom';
 
+import './DisplayAll.css';
+
 const DisplayAll = () => {
   const [allReviews, setAllReviews] = useState([]);
   const [searchParams] = useSearchParams();

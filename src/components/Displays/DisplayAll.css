@@ -1,0 +1,13 @@
+/* Display All */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--clr-light);
+}
+
+.error {
+  position: absolute;
+  top: 25vh;
+}

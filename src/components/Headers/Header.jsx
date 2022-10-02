@@ -1,7 +1,10 @@
+import User from '../Nav/User';
+import './Header.css';
 const Header = () => {
   return (
     <header className="header">
-      <h1>NC Game Reviews</h1>
+      <h1>Read Reviews</h1>
+      <User />
     </header>
   );
 };

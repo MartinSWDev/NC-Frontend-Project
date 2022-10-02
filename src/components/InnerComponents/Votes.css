@@ -1,0 +1,42 @@
+/* Votes */
+
+.votes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--clr-dark-accent);
+  max-height: 2em;
+  max-width: 40%;
+  margin: 1rem 2rem 0 2rem;
+  border-radius: 1.25em;
+  color: var(--clr-light);
+}
+
+.votes__icon__left {
+  background-color: var(--clr-light-accent);
+  width: 30%;
+  height: 1em;
+  padding: 0.5em 0;
+  border-radius: 1.25em 0 0 1.25em;
+  color: var(--clr-dark);
+}
+
+.votes__display {
+  width: 30%;
+}
+
+.votes__icon__right {
+  background-color: var(--clr-light-accent);
+  width: 30%;
+  height: 1em;
+  padding: 0.5em 0;
+  border-radius: 0 1.25em 1.25em 0;
+  color: var(--clr-dark);
+}
+
+.votes__icon__left:hover,
+.votes__icon__right:hover {
+  background-color: var(--clr-dark-accent);
+  color: var(--clr-light);
+}

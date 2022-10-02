@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../context/userContext';
 
+import './NewComment.css';
+
 const NewComment = ({ review_id, showComments, setShowComments }) => {
   const [isPosted, setIsPosted] = useState(false);
   const [err, setErr] = useState(false);
@@ -32,12 +34,10 @@ const NewComment = ({ review_id, showComments, setShowComments }) => {
         setErr(true);
       });
   };
+
   return (
-    <section className="comments-section__new">
-      <form
-        className="comments-section__new-form"
-        onSubmit={(e) => handleSubmit(e)}
-      >
+    <section className="newcomment">
+      <form className="newcomment__form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="commentText">New Comment</label>
         <textarea id="commentText" required></textarea>
         <button>Post comment</button>

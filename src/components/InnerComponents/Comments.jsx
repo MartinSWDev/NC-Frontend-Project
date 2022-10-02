@@ -4,6 +4,8 @@ import uuid from 'react-uuid';
 import { UserContext } from '../../context/userContext';
 import { isoDateTimeToDate } from '../../utils/functions';
 
+import './Comments.css';
+
 const Comments = ({ review_id, showComments, setShowComments }) => {
   const { user } = useContext(UserContext);
 
@@ -28,12 +30,12 @@ const Comments = ({ review_id, showComments, setShowComments }) => {
   };
 
   return (
-    <section className="comments-section">
+    <section className="comments__section">
       <h2>Comments</h2>
       {showComments.map((comment) => {
         return (
-          <div key={uuid()} className="comments-card">
-            <h3>{comment.author}</h3>
+          <div key={uuid()} className="comments__card">
+            <h4>{comment.author}</h4>
             <p>{comment.body}</p>
             <p>{isoDateTimeToDate(comment.created_at)}</p>
             {user ? (

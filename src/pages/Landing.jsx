@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../context/userContext';
 
+import './Landing.css';
+
 const Landing = () => {
   const navigate = useNavigate();
   const [usernames, setUsernames] = useState([]);
@@ -29,7 +31,7 @@ const Landing = () => {
         setUsernames(options);
       })
       .catch();
-  }, []);
+  }, [setUser]);
 
   const darkAccent = '#6e5dcf';
   const customStyles = {
@@ -97,7 +99,7 @@ const Landing = () => {
       }}
     >
       <Select
-        className="userSelect"
+        className="landing__select"
         styles={customStyles}
         options={usernames}
         getOptionValue={(option) => option.name}
@@ -106,7 +108,7 @@ const Landing = () => {
         components={{ DropdownIndicator }}
         placeholder={<div>Select User</div>}
       />
-      <button className="landing-btn" onClick={handleUser}>
+      <button className="landing__btn" onClick={handleUser}>
         Login
       </button>
     </motion.div>

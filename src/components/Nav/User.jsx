@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../context/userContext';
 import UserInfo from './UserInfo';
 
+import './User.css';
+
 const User = () => {
   const { user } = useContext(UserContext);
   const [openUser, setOpenUser] = useState(false);
@@ -14,7 +16,7 @@ const User = () => {
     <div>
       {user ? (
         <img
-          className="user-img"
+          className="user"
           src={user.avatar_url}
           alt={`${user.username} profile pic`}
           onClick={() => {

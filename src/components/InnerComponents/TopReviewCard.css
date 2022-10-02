@@ -1,0 +1,46 @@
+/* topReviewCard */
+
+/* borrows css from reviewcard.css
+    including: 
+        reviewcard
+        loadable
+*/
+
+.topreviewcard {
+  max-height: 22em;
+  width: 70%;
+  margin: 6em 0 2em 0;
+  color: var(--clr-dark);
+}
+
+.topreviewcard__text {
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  box-shadow: inset 0px 15em 6em -6em var(--clr-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  color: var(--clr-light);
+}
+.topreviewcard h2 {
+  margin: 0.2em 0;
+}
+
+.topreviewcard p {
+  margin: 0 0;
+  padding: 0;
+  font-size: 1em;
+  border-radius: 9px 9px 0 0;
+}
+
+.topreviewcard__img {
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+  border-radius: 0;
+  margin: 0;
+}
