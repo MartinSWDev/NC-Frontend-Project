@@ -36,6 +36,12 @@
   background-color: var(--clr-light-accent);
 }
 
+@media (min-width: 1024px) {
+  .loadable {
+    margin: 8em 0 0 3em;
+  }
+}
+
 .loadable:hover {
   transform: scale(1.03);
   transition: all 0.7s;

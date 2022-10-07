@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--clr-light);
-  margin: 3em 0;
+  /* margin: 3em 0; */
 }
 
 .singlereview__img {

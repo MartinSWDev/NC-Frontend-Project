@@ -28,7 +28,7 @@ const DisplayAll = () => {
   }, [searchParams]);
 
   return (
-    <main key={uuid()} className="main">
+    <main key={uuid()} className="main__all">
       {ifError ? (
         <h2 className="error">{errorInfo.response.data.msg}</h2>
       ) : (

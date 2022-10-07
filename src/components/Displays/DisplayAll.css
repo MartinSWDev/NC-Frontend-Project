@@ -1,10 +1,17 @@
 /* Display All */
-.main {
+.main__all {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: var(--clr-light);
+}
+
+@media (min-width: 1024px) {
+  .main__all {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .error {

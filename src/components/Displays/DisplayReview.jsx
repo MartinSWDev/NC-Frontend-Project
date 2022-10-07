@@ -28,7 +28,7 @@ const DisplayReview = ({ user }) => {
   }, [review_id]);
 
   return (
-    <main className="main">
+    <main className="main__review">
       {review.map((item) => {
         return <SingleReview item={item} key={uuid()} />;
       })}
