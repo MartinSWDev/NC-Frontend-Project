@@ -2,8 +2,8 @@
 
 ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=flat-square&logo=node.js&logoColor=white)
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-![Framer](https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB)
+![Framer](https://img.shields.io/badge/Framer-black?style=flat-square&logo=framer&logoColor=blue)
 
 Welcome to my **React** project, created as part of the [Northcoders](https://northcoders.com/) bootcamp. This project continues on and uses the [Back-end API project](https://github.com/MartinSWDev/NC-Backend-Project) to allow users to interact with different games reviews.
 **This is being developed as mobile first and currently the css is only working in mobile view.**
