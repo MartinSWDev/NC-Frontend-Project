@@ -6,6 +6,7 @@ import Select, { components } from 'react-select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../context/userContext';
+import knight from '../assets/img/horse.png'
 
 import './Landing.css';
 
@@ -98,6 +99,7 @@ const Landing = () => {
         },
       }}
     >
+      <img src={knight} className="landing__horse" alt="black knight chess piece" />
       <Select
         className="landing__select"
         styles={customStyles}
